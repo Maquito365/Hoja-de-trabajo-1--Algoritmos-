@@ -52,4 +52,12 @@ public class RadioKM implements Radio{
     this.estacionActual = 530;
    }
 
+    @Override
+    public void guardarEstacion(int numeroBoton){
+
+    }
+
+    @Override
+    public void cargarEstacion(int numeroBoton){
+    }
 }
