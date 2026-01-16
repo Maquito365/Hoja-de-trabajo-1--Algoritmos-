@@ -27,29 +27,35 @@ public class RadioKM implements Radio{
 
    @Override
    public void avanzarEstacion(){
-    if(this.esFM){
-        this.estacionActual += 0.2;
-        if(this.estacionActual > 107.9){
-            this.estacionActual = 87.9;
-        }
-    } else {
-        this.estacionActual += 10;
-        if(this.estacionActual > 1610){
-            this.estacionActual = 530;
+    if(this.encendida){
+        if(this.esFM){
+            this.estacionActual += 0.2;
+            if(this.estacionActual > 107.9){
+                this.estacionActual = 87.9;
+            }
+        } else {
+            this.estacionActual += 10;
+            if(this.estacionActual > 1610){
+                this.estacionActual = 530;
+            }
         }
     }
    }
 
    @Override
    public void cambiarFM(){
-    this.esFM = true;
-    this.estacionActual = 87.9;
+    if(this.encendida){
+        this.esFM = true;
+        this.estacionActual = 87.9;
+    }
    }
 
    @Override
    public void cambiarAM(){
-    this.esFM = false;
-    this.estacionActual = 530;
+    if(this.encendida){
+        this.esFM = false;
+        this.estacionActual = 530;
+    }
    }
 
     @Override
