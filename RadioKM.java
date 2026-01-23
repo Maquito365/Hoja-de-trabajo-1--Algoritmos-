@@ -15,9 +15,9 @@ public class RadioKM implements Radio{
     return this.estacionActual;
    }
 
-   public boolean isEncendida(){
-    return this.encendida;
-   }
+    public boolean isEncendida(){
+     return this.encendida;
+    }
 
    @Override
    public void encenderRadio() {
@@ -76,3 +76,5 @@ public class RadioKM implements Radio{
         }
     }
 }
+    
+    
