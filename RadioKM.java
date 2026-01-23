@@ -15,6 +15,10 @@ public class RadioKM implements Radio{
     return this.estacionActual;
    }
 
+   public boolean isEncendida(){
+    return this.encendida;
+   }
+
    @Override
    public void encenderRadio() {
     this.encendida = true;
@@ -60,10 +64,15 @@ public class RadioKM implements Radio{
 
     @Override
     public void guardarEstacion(int numeroBoton){
-
+        if(this.encendida && numeroBoton >= 1 && numeroBoton <=12){
+            this.estacionesGuardadas[numeroBoton -1] = this.estacionActual;
+        }
     }
 
     @Override
     public void cargarEstacion(int numeroBoton){
+        if(this.encendida && numeroBoton >= 1 && numeroBoton <=12){
+            this.estacionActual = this.estacionesGuardadas[numeroBoton -1];
+        }
     }
 }
