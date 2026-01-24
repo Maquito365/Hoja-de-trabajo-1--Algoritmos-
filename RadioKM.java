@@ -2,14 +2,22 @@ public class RadioKM implements Radio{
    private boolean encendida;
    private boolean esFM;
    private double estacionActual;
-   private double[] estacionesGuardadas;
+   private double[] presetsFM = new double[12];
+   private double[] presetsAM = new double[12];
+
 
    public RadioKM(){
     this.encendida = false;
-    this.esFM = true; 
-    this.estacionActual = 87.9;  
-    this.estacionesGuardadas = new double[12];
-   }
+    this.esFM = true;
+    this.estacionActual = 87.9;
+    this.presetsFM = new double[12];
+    this.presetsAM = new double[12];
+    }
+
+
+   public boolean isFM() {
+    return this.esFM;
+    }
 
    public double getEstacionActual(){
     return this.estacionActual;
@@ -64,17 +72,24 @@ public class RadioKM implements Radio{
 
     @Override
     public void guardarEstacion(int numeroBoton){
-        if(this.encendida && numeroBoton >= 1 && numeroBoton <=12){
-            this.estacionesGuardadas[numeroBoton -1] = this.estacionActual;
+    if(this.encendida && numeroBoton >= 1 && numeroBoton <=12){
+        if (esFM) {
+            presetsFM[numeroBoton - 1] = estacionActual;
+        } else {
+            presetsAM[numeroBoton - 1] = estacionActual;
         }
+     }
     }
+
 
     @Override
     public void cargarEstacion(int numeroBoton){
-        if(this.encendida && numeroBoton >= 1 && numeroBoton <=12){
-            this.estacionActual = this.estacionesGuardadas[numeroBoton -1];
+    if(this.encendida && numeroBoton >= 1 && numeroBoton <=12){
+        if (esFM) {
+            estacionActual = presetsFM[numeroBoton - 1];
+        } else {
+            estacionActual = presetsAM[numeroBoton - 1];
         }
+     }
     }
 }
-    
-    
